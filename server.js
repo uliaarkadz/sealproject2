@@ -2,7 +2,7 @@
 require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
-const methodOverride = requie("method-override");
+const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 
 //get .envvariable
