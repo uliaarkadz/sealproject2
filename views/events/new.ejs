@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Create New Event</h1>
+    <form action="/event" method="post">
+      <label for="eventName">
+        Event Name:<input type="text" name="eventName"
+      /></label>
+      <label for="description">
+        Description:<input type="text" name="description"
+      /></label>
+      <label for="distance">
+        Distance:<input type="number" name="distance"
+      /></label>
+      <label for="date">Date:<input type="datetime-local" name="date" /></label>
+      <label for="date">Active:<input type="checkbox" name="isActive" /></label>
+      <button>Create new event</button>
+    </form>
+  </body>
+</html>

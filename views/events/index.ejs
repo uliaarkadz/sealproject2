@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="main-container">
+      <a href="/event/new"><button>Create Event</button></a>
+      <% for( let i = 0; i < event.length; i++ ) { %>
+      <h2>
+        <div><%=moment(event[i].date).format('MMMM Do YYYY')%></div>
+        <a href="/event/<%=event[i]._id%>"> <%=event[i].eventName%></a>
+        <div><%=event[i].isActive ? "Active" : "Closed"%></div>
+      </h2>
+
+      <h2><%=event[i].distance%></h2>
+      <h2></h2>
+
+      <% } %>
+    </div>
+  </body>
+</html>
