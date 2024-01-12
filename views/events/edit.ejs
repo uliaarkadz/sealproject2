@@ -27,9 +27,9 @@
       /></label>
       <label for="date"
         >Date:<input
-          type="datetime-local"
+          type="date"
           name="date"
-          value="<%=moment(event.date).format('MM/DD/YYYY hh:mm').toString()%>"
+          value="<%=moment(event.date).format('yyyy-MM-DD')%>"
       /></label>
       <label for="date"
         >Active:<input type="checkbox" name="isActive" <%=event.isActive ?

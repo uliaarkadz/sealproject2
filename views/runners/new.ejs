@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Runner</title>
+  </head>
+  <body>
+    <H2>Create a new runner</H2>
+    <form action="/runner/<%=eventId %>" method="post">
+      First Name:<input type="text" name="firstName" /> Last Name:<input
+        type="text"
+        name="lastName"
+      />
+      Age: <input type="number" name="age" /> Date of Birth:<input
+        type="date"
+        name="dob"
+      />
+      Start Time:<input type="time" name="startTime" /> Finish Time:<input
+        type="time"
+        name="finishTime"
+      />
+      <button>Add runner</button>
+    </form>
+  </body>
+</html>
