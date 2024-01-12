@@ -40,11 +40,34 @@ app.get("/event", async (req, res) => {
 app.get("/event/new", (req, res) => {
   res.render("events/new.ejs");
 });
+
 //Create route - post event
 app.post("/event", async (req, res) => {
   req.body.isActive = req.body.isActive === "on" ? true : false;
   await Event.create(req.body);
   res.redirect("/event");
+});
+
+// Edit route - edit event
+app.get("/event/edit/:id", async (req, res) => {
+  const id = req.params.id;
+  const event = await Event.findById(id);
+  res.render("events/edit.ejs", { event, moment });
+});
+
+//Update route - put event
+app.put("/event/:id", async (req, res) => {
+  const id = req.params.id;
+  req.body.isActive = req.body.isActive === "on" ? true : false;
+  await Event.findByIdAndUpdate(id, req.body);
+  res.redirect(`/event/${id}`);
+});
+
+//Destroy route - delete event
+app.delete("/event/:id", async (req, res) => {
+  const id = req.params.id;
+  await Event.findByIdAndDelete(id);
+  res.redirect(`/event`);
 });
 
 //Show Route - display event by id
@@ -54,6 +77,7 @@ app.get("/event/:id", async (req, res) => {
 
   res.render("events/show.ejs", { event });
 });
+
 // turn on the server (the listener)
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);

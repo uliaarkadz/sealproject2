@@ -8,6 +8,11 @@
   <body>
     <div id="item-container">
       <h2><%=event.eventName%></h2>
+
+      <a href="/event/edit/<%=event._id %>"><button>Edit Event</button></a>
+      <form action="/event/<%=event._id%>?_method=DELETE" method="POST">
+        <button>Delete</button>
+      </form>
     </div>
   </body>
 </html>

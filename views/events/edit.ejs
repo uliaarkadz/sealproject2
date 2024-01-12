@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="/event/<%=event._id%>?_method=PUT" method="post">
+      <label for="eventName">
+        Event Name:<input
+          type="text"
+          name="eventName"
+          value="<%=event.eventName%>"
+      /></label>
+      <label for="description">
+        Description:<input
+          type="text"
+          name="description"
+          value="<%=event.description%>"
+      /></label>
+      <label for="distance">
+        Distance:<input
+          type="number"
+          name="distance"
+          value="<%=event.distance%>"
+      /></label>
+      <label for="date"
+        >Date:<input
+          type="datetime-local"
+          name="date"
+          value="<%=moment(event.date).format('MM/DD/YYYY hh:mm').toString()%>"
+      /></label>
+      <label for="date"
+        >Active:<input type="checkbox" name="isActive" <%=event.isActive ?
+        "checked" : ""%> /></label
+      >
+      <button>Update event</button>
+    </form>
+  </body>
+</html>
