@@ -15,6 +15,7 @@ const eventSchema = new Schema({
   eventName: String,
   description: String,
   distance: Number,
+  unit: String,
   date: Date,
   isActive: Boolean,
   username: String,

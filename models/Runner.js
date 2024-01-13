@@ -19,7 +19,7 @@ const runnerSchema = new Schema({
   startTime: String,
   finishTime: String,
   netTime: String,
-  pace: Date,
+  pace: String,
   eventId: Schema.Types.ObjectId,
 });
 

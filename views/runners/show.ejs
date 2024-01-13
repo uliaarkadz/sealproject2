@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="item-container">
+      <h2>
+        Name: <%=runner.firstName%> <%=runner.lastName%> Age:<%=runner.age%>
+      </h2>
+      <h2>Pace: <%=runner.pace%></h2>
+      <h2>Times: <%=runner.startTime%> <%=runner.finishTime%></h2>
+      <a href="/runner/<%=eventId%>/edit/<%=runner._id %>"
+        ><button>Edit Runner</button></a
+      >
+      <form
+        action="/runner/<%=eventId%>/<%=runner._id%>?_method=DELETE"
+        method="POST"
+      >
+        <button>Delete</button>
+      </form>
+    </div>
+  </body>
+</html>

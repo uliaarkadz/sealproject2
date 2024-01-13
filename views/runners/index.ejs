@@ -5,5 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <div id="main-container">
+      <% for( let i = 0; i < runners.length; i++ ) { %>
+      <a href="/runner/<%=eventId%>/<%=runners[i]._id%>">
+        <h2><%=runners[i].firstName%> <%=runners[i].lastName%></h2></a
+      >
+      <h2><%=runners[i].age%></h2>
+      <h2><%=runners[i].pace%></h2>
+
+      <% } %>
+    </div>
+  </body>
 </html>

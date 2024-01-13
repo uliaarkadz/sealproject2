@@ -7,6 +7,7 @@ const mongoose = require("./models/connection");
 const Event = require("./models/Event");
 const Runner = require("./models/Runner");
 const moment = require("moment");
+const myFunctions = require("./utils/customFunctions");
 
 //get .envvariable
 const { PORT, DATABASE_URL } = process.env;
@@ -49,6 +50,7 @@ app.get("/event/new", (req, res) => {
 
 //Create route - post event
 app.post("/event", async (req, res) => {
+  console.log(req.body);
   req.body.isActive = req.body.isActive === "on" ? true : false;
   await Event.create(req.body);
   res.redirect("/event");
@@ -87,28 +89,81 @@ app.get("/event/:id", async (req, res) => {
 /////////////////
 //Runners Routs
 ////////////////
-// Index route - get events
+
+// Index route - get runners
 app.get("/runner/:eventId", async (req, res) => {
-  const runners = await Runner.find({});
-  res.render("runners/index.ejs", { runners, moment });
+  const eventId = req.params.eventId;
+  const runners = await Runner.find({ eventId });
+  res.render("runners/index.ejs", { runners, eventId, moment });
 });
 
-// New route - post event
+// New route - get new runner
 app.get("/runner/:eventId/new", (req, res) => {
   const eventId = req.params.eventId;
   res.render("runners/new.ejs", { eventId });
 });
 
-//Create route - post event
+//Create route - post runner
 app.post("/runner/:eventId", async (req, res) => {
-  req.body.eventId = req.params.eventId;
+  //get event id
+  const eventId = req.params.eventId;
+  req.body.eventId = eventId;
+  //get event distance
+  const event = await Event.findById(eventId);
+  const unit = event.unit;
+  let distance;
 
+  switch (event.unit) {
+    case "km":
+      distance = event.distance / 1.609;
+      break;
+    case "m":
+      distance = event.distance;
+      break;
+    default:
+      console.log("Not valid inpit");
+  }
+  //calculate pace
+  req.body.pace = myFunctions.calculatePace(
+    req.body.finishTime,
+    req.body.startTime,
+    distance
+  );
+  req.body.dob = moment(req.body.dob).utc();
   await Runner.create(req.body);
   res.redirect(`/event/${req.params.eventId}`);
 });
+
+// Edit route - get edit runner
+app.get("/runner/:eventId/edit/:runnerId", async (req, res) => {
+  const id = req.params.runnerId;
+  const eventId = req.params.eventId;
+  const runner = await Runner.findById(id);
+
+  res.render("runners/edit.ejs", { runner, eventId, moment });
+});
+
+//Update route - put runner
+
+//Update route - put event
+app.put("/runner/:event/:id", async (req, res) => {
+  const id = req.params.id;
+  const eventId = req.params.eventId;
+  req.body.eventId = eventId;
+  await Event.findByIdAndUpdate(id, req.body);
+  res.redirect(`runner/${eventId}/${id}`);
+});
+
+//Show route - get runner by id
+app.get("/runner/:eventId/:id", async (req, res) => {
+  const id = req.params.id;
+  const eventId = req.params.eventId;
+  const runner = await Runner.findById(id);
+
+  res.render("runners/show.ejs", { runner, eventId });
+});
+
 // turn on the server (the listener)
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
-
-//"<%=moment(event.date).format('yyyy/MM/DD')%>
