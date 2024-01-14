@@ -11,7 +11,9 @@
         Name: <%=runner.firstName%> <%=runner.lastName%> Age:<%=runner.age%>
       </h2>
       <h2>Pace: <%=runner.pace%></h2>
-      <h2>Times: <%=runner.startTime%> <%=runner.finishTime%></h2>
+      <h2>
+        Times: Start - <%=runner.startTime%> Finish - <%=runner.finishTime%>
+      </h2>
       <a href="/runner/<%=eventId%>/edit/<%=runner._id %>"
         ><button>Edit Runner</button></a
       >

@@ -14,9 +14,17 @@
         <button>Delete</button>
       </form>
       <a href="/runner/<%=event._id %>/new"><button>Add Runners</button></a>
-      <a href="/runner/<%=event._id %>"
-        ><button>Show Runners Runners</button></a
+      <a href="/runner/<%=event._id %>"><button>Show Runners</button></a>
+    </div>
+    <div id="main-container">
+      <% for( let i = 0; i < runners.length; i++ ) { %>
+      <a href="/runner/<%=event._id%>/<%=runners[i]._id%>">
+        <h2><%=runners[i].firstName%> <%=runners[i].lastName%></h2></a
       >
+      <h2><%=runners[i].age%></h2>
+      <h2><%=runners[i].pace%></h2>
+
+      <% } %>
     </div>
   </body>
 </html>

@@ -79,13 +79,23 @@ app.delete("/event/:id", async (req, res) => {
 });
 
 //Show Route - display event by id
-app.get("/event/:id", async (req, res) => {
-  const id = req.params.id;
-  const event = await Event.findById(id);
+// app.get("/event/:id", async (req, res) => {
+//   const id = req.params.id;
+//   const event = await Event.findById(id);
 
-  res.render("events/show.ejs", { event });
+//   res.render("events/show.ejs", { event });
+// });
+/////////////////
+//Event-runners Routs
+////////////////
+
+// Show route - get event runners
+app.get("/event/:eventId/runners", async (req, res) => {
+  const eventId = req.params.eventId;
+  const event = await Event.findById(eventId);
+  const runners = await Runner.find({ eventId });
+  res.render("events/show.ejs", { runners, event, eventId, moment });
 });
-
 /////////////////
 //Runners Routs
 ////////////////
@@ -131,7 +141,7 @@ app.post("/runner/:eventId", async (req, res) => {
   );
   req.body.dob = moment(req.body.dob).utc();
   await Runner.create(req.body);
-  res.redirect(`/event/${req.params.eventId}`);
+  res.redirect(`/event/${req.params.eventId}/runners`);
 });
 
 // Edit route - get edit runner
@@ -145,13 +155,22 @@ app.get("/runner/:eventId/edit/:runnerId", async (req, res) => {
 
 //Update route - put runner
 
-//Update route - put event
-app.put("/runner/:event/:id", async (req, res) => {
+app.put("/runner/:eventId/:id", async (req, res) => {
   const id = req.params.id;
   const eventId = req.params.eventId;
   req.body.eventId = eventId;
-  await Event.findByIdAndUpdate(id, req.body);
-  res.redirect(`runner/${eventId}/${id}`);
+  await Event.findByIdAndUpdate(id, eventId, req.body);
+  res.redirect(`/runner/${eventId}/${id}`);
+});
+
+//Destroy route - delete event
+app.delete("/runner/:eventId/:id", async (req, res) => {
+  const id = req.params.id;
+  const eventId = req.params.eventId;
+  console.log(eventId);
+  await Runner.findByIdAndDelete(id);
+  debugger;
+  res.redirect(`/runner/${eventId}`);
 });
 
 //Show route - get runner by id

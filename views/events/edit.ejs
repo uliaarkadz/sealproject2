@@ -25,6 +25,10 @@
           name="distance"
           value="<%=event.distance%>"
       /></label>
+      <select name="unit">
+        <option value="km" <%if(event.unit =='km'){%>selected <% } %>>Kilometers</option>
+        <option value="m" <%if(event.unit =='m'){%>selected <% } %>>Miles</option>        
+      </select>
       <label for="date"
         >Date:<input
           type="date"
