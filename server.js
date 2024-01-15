@@ -68,7 +68,7 @@ app.put("/event/:id", async (req, res) => {
   const id = req.params.id;
   req.body.isActive = req.body.isActive === "on" ? true : false;
   await Event.findByIdAndUpdate(id, req.body);
-  res.redirect(`/event/${id}`);
+  res.redirect(`/event/${id}/runners`);
 });
 
 //Destroy route - delete event
@@ -159,7 +159,28 @@ app.put("/runner/:eventId/:id", async (req, res) => {
   const id = req.params.id;
   const eventId = req.params.eventId;
   req.body.eventId = eventId;
-  await Event.findByIdAndUpdate(id, eventId, req.body);
+  const event = await Event.findById(eventId);
+  const unit = event.unit;
+  let distance;
+
+  switch (event.unit) {
+    case "km":
+      distance = event.distance / 1.609;
+      break;
+    case "m":
+      distance = event.distance;
+      break;
+    default:
+      console.log("Not valid inpit");
+  }
+  //calculate pace
+  req.body.pace = myFunctions.calculatePace(
+    req.body.finishTime,
+    req.body.startTime,
+    distance
+  );
+  req.body.dob = moment(req.body.dob).utc();
+  await Runner.findByIdAndUpdate(id, req.body);
   res.redirect(`/runner/${eventId}/${id}`);
 });
 

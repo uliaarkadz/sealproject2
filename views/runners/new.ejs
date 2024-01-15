@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Runner</title>
-  </head>
+  <%- include("../partials/head.ejs",{title: "Create New Runner"}) %>
   <body>
-    <H2>Create a new runner</H2>
+    <%- include("../partials/header.ejs") %>
+    <h2>Create a new runner</h2>
     <form action="/runner/<%=eventId %>" method="post">
-      First Name:<input type="text" name="firstName" /> Last Name:<input
-        type="text"
-        name="lastName"
-      />
-      Age: <input type="number" name="age" /> Date of Birth:<input
-        type="date"
-        name="dob"
-      />
-      Start Time:<input type="time" step="1" name="startTime" /> Finish
-      Time:<input type="time" step="1" name="finishTime" />
+      First Name: <input type="text" name="firstName" /> Last Name:
+      <input type="text" name="lastName" /> Age:
+      <input type="number" name="age" /> Date of Birth:
+      <input type="date" name="dob" /> Gender:
+      <select name="gender">
+        <option value=""></option>
+        <option value="m">Male</option>
+        <option value="f">Female</option>
+      </select>
+      Bib#: <input type="text" name="bib" /> Start Time:
+      <input type="time" step="1" name="startTime" /> Finish Time:
+      <input type="time" step="1" name="finishTime" />
       <button>Add runner</button>
     </form>
   </body>

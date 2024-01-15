@@ -1,45 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
+<%- include("../partials/head.ejs",{title: "Edit Event"}) %>
+<body>
+  <div id = 'main-container'>
+  <%- include("../partials/header.ejs") %>
+  <div id = 'editForm'>
     <form action="/event/<%=event._id%>?_method=PUT" method="post">
       <label for="eventName">
-        Event Name:<input
+        Event Name</label><input
           type="text"
           name="eventName"
           value="<%=event.eventName%>"
-      /></label>
+      />
       <label for="description">
-        Description:<input
+        Description</label><input
           type="text"
           name="description"
           value="<%=event.description%>"
-      /></label>
-      <label for="distance">
-        Distance:<input
+      />
+      <p>
+        <label  for="distance">
+        Distance</label><input id="distance"
           type="number"
           name="distance"
           value="<%=event.distance%>"
-      /></label>
+      />      
       <select name="unit">
         <option value="km" <%if(event.unit =='km'){%>selected <% } %>>Kilometers</option>
         <option value="m" <%if(event.unit =='m'){%>selected <% } %>>Miles</option>        
       </select>
+    </p>
       <label for="date"
-        >Date:<input
+        >Date</label><input
           type="date"
           name="date"
           value="<%=moment(event.date).format('yyyy-MM-DD')%>"
-      /></label>
+      />
       <label for="date"
-        >Active:<input type="checkbox" name="isActive" <%=event.isActive ?
-        "checked" : ""%> /></label
-      >
-      <button>Update event</button>
+        >Active</label><input id='active' type="checkbox" name="isActive" <%=event.isActive ?
+        "checked" : ""%> />
+      <div id="button"><button>Update event</button></div>
     </form>
+  </div>
+</div>
   </body>
 </html>

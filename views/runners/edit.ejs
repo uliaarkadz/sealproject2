@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body><H2>Edit runner</H2>
+  <%- include("../partials/head.ejs") ,{title: "Edit Runner"}%>
+  <body>
+    <%- include("../partials/header.ejs") %>
+    <h2>Edit runner</h2>
     <form action="/runner/<%=eventId %>/<%=runner._id %>?_method=PUT" method="post">
       First Name:<input type="text" name="firstName" value="<%=runner.firstName %>"/> Last Name:<input
         type="text"
@@ -17,6 +15,13 @@
         name="dob"
         value="<%=moment(runner.dob).format('yyyy-MM-DD')%>"
       />
+      Gender:
+      <select name="gender">
+        <option value=""></option>
+        <option value="m" <%if(runner.gender =='m'){%>selected <% } %>>Male</option>
+        <option value="f" <%if(runner.gender =='f'){%>selected <% } %>>Female</option>
+      </select>
+      Bib#: <input type="text" name="bib" value="<%=runner.bib %>"/> 
       Start Time:<input type="time" step="1" name="startTime"  value="<%=runner.startTime %>"/> Finish
       Time:<input type="time" step="1" name="finishTime" value="<%=runner.finishTime %>" />
       <button>Update</button></body>

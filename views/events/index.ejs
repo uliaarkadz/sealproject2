@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/style.css" />
-  </head>
+  <%- include("../partials/head.ejs",{title: "Home Event"}) %>
   <body>
     <div id="main-container">
-      <a href="/event/new"><button>Create Event</button></a>
-      <% for( let i = 0; i < event.length; i++ ) { %>
-      <h2>
-        <div><%=moment(event[i].date).format('MMMM Do YYYY')%></div>
-        <a href="/event/<%=event[i]._id%>/runners"> <%=event[i].eventName%></a>
-        <div><%=event[i].isActive ? "Active" : "Closed"%></div>
-      </h2>
+      <%- include("../partials/header.ejs") %>
+      <div id="button">
+        <a href="/event/new">Create Event</a>
+      </div>
+      <div id="event-container">
+        <% for( let i = 0; i < event.length; i++ ) { %>
+        <div id="event-item">
+          <div class="eventDetail"><%=moment(event[i].date).format('MMMM Do YYYY')%></div>
+          <div class="eventDetail">
+            <a href="/event/<%=event[i]._id%>/runners">
+              <%=event[i].eventName%></a
+            >
+          </div class="eventDetail">
+          <div class="eventDetail"><%=event[i].isActive ? "Active" : "Closed"%></div>
 
-      <h2><%=event[i].distance%> K</h2>
-
-      <% } %>
+          <div class="eventDetail" id="distance"><%=event[i].distance%> K</div>
+        </div>
+        <% } %>
+      </div>
     </div>
   </body>
 </html>

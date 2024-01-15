@@ -14,6 +14,7 @@ const runnerSchema = new Schema({
   firstName: String,
   lastName: String,
   age: Number,
+  gender: String,
   dob: Date,
   bib: Number,
   startTime: String,
