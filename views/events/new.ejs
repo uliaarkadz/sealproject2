@@ -3,24 +3,67 @@
   <%- include("../partials/head.ejs",{title: "Create New Event"})%>
   <body>
     <%- include("../partials/header.ejs") %>
-    <h1>Create New Event</h1>
-    <form action="/event" method="post">
-      <label for="eventName">
-        Event Name:<input type="text" name="eventName"
-      /></label>
-      <label for="description">
-        Description:<input type="text" name="description"
-      /></label>
-      <label for="distance">
-        Distance:<input type="number" name="distance"
-      /></label>
-      <select name="unit">
-        <option value="m">Miles</option>
-        <option value="km">Kilometers</option>
-      </select>
-      <label for="date">Date:<input type="date" name="date" /></label>
-      <label for="date">Active:<input type="checkbox" name="isActive" /></label>
-      <button>Create new event</button>
-    </form>
+    <div class="container">
+      <div class="col-md-3"><h2>Create New Event</h2></div>
+      <form action="/event" method="post">
+        <div class="row g-3 align-items-center">
+          <label class="col-md-2 col-form-label" for="eventName">
+            Event Name</label
+          >
+          <div class="col-auto">
+            <input class="form-control" type="text" name="eventName" />
+          </div>
+        </div>
+
+        <div class="row g-3 align-items-center">
+          <label class="col-md-2 col-form-label" for="description">
+            Description</label
+          >
+          <div class="col-auto">
+            <input class="form-control" type="text" name="description" />
+          </div>
+        </div>
+
+        <div class="row g-3 align-items-center">
+          <label class="col-md-2 col-form-label" for="distance">
+            Distance</label
+          >
+          <div class="col-md-1">
+            <input
+              class="col-auto form-control"
+              type="number"
+              name="distance"
+            />
+          </div>
+          <div class="col-md-1">
+            <select class="form-select" name="unit">
+              <option value="m">Miles</option>
+              <option value="km">Kilometers</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row g-3 align-items-center">
+          <label class="col-md-2 col-form-label" for="date">Date</label>
+          <div class="col-md-2">
+            <input class="col-auto form-control" type="date" name="date" />
+          </div>
+        </div>
+
+        <div class="row g-3 align-items-center">
+          <label class="col-md-2 col-form-label" for="date">Active</label
+          ><input
+            class="form-check-input"
+            id="active"
+            type="checkbox"
+            name="isActive"
+          />
+        </div>
+
+        <div class="col-md-3" id="button">
+          <button>Create new event</button>
+        </div>
+      </form>
+    </div>
   </body>
 </html>

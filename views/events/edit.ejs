@@ -2,46 +2,75 @@
 <html lang="en">
 <%- include("../partials/head.ejs",{title: "Edit Event"}) %>
 <body>
-  <div id = 'main-container'>
   <%- include("../partials/header.ejs") %>
-  <div id = 'editForm'>
+  <div class = "container">
+    <div class="col-md-3"><h2>Edit Event</h2></div>
     <form action="/event/<%=event._id%>?_method=PUT" method="post">
-      <label for="eventName">
-        Event Name</label><input
+
+      <div class="row g-3 align-items-center">
+        <label class="col-md-2 col-form-label" for="eventName">Event Name</label>
+        <div class="col-auto">
+        <input class="form-control"
           type="text"
           name="eventName"
           value="<%=event.eventName%>"
-      />
-      <label for="description">
-        Description</label><input
+      /></div>
+      </div>
+
+      <div class="row g-3 align-items-center">
+      <label class="col-md-2 col-form-label" for="description">
+        Description</label>
+        <div class="col-auto">
+          <input class="form-control"
           type="text"
           name="description"
           value="<%=event.description%>"
-      />
-      <p>
-        <label  for="distance">
-        Distance</label><input id="distance"
+      /></div>
+      </div>
+
+      <div class="row g-3 align-items-center">
+        <label class="col-md-2 col-form-label" for="distance">
+        Distance</label>
+        <div class="col-md-1">
+        <input class="form-control" id="distance"
           type="number"
           name="distance"
           value="<%=event.distance%>"
-      />      
-      <select name="unit">
+      />
+      </div>
+      <div class="col-md-1">
+      <select class="form-select" name="unit">
         <option value="km" <%if(event.unit =='km'){%>selected <% } %>>Kilometers</option>
         <option value="m" <%if(event.unit =='m'){%>selected <% } %>>Miles</option>        
       </select>
-    </p>
-      <label for="date"
-        >Date</label><input
+      </div>
+      </div> 
+
+      <div class="row g-3 align-items-center">
+      <label class="col-md-2 col-form-label" for="date"
+        >Date</label>
+        <div class="col-auto">  
+        <input class="form-control"
           type="date"
           name="date"
           value="<%=moment(event.date).format('yyyy-MM-DD')%>"
       />
-      <label for="date"
-        >Active</label><input id='active' type="checkbox" name="isActive" <%=event.isActive ?
-        "checked" : ""%> />
-      <div id="button"><button>Update event</button></div>
-    </form>
+      </div>
+      </div>
+
+      <div class="row g-3 align-items-center">
+      <label class="col-md-2 col-form-label" for="isActive">Active
+      </label>
+        <div class="form-check col-sm-1">
+        <input class="form-check-input" type="checkbox" id="active" name="isActive" <%=event.isActive ?
+        "checked" : ""%> >
+        </div>
+      </div>
+      
+    <div class="col-md-3" id="button">
+      <button>Update event</button>
+    </div>
+  </form>
   </div>
-</div>
-  </body>
+</body>
 </html>

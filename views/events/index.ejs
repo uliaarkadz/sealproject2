@@ -2,26 +2,30 @@
 <html lang="en">
   <%- include("../partials/head.ejs",{title: "Home Event"}) %>
   <body>
-    <div id="main-container">
-      <%- include("../partials/header.ejs") %>
-      <div id="button">
+    <%- include("../partials/header.ejs") %>
+    <div class="container">
+      <div class="col-sm-3" id="button">
         <a href="/event/new">Create Event</a>
       </div>
-      <div id="event-container">
-        <% for( let i = 0; i < event.length; i++ ) { %>
-        <div id="event-item">
-          <div class="eventDetail"><%=moment(event[i].date).format('MMMM Do YYYY')%></div>
-          <div class="eventDetail">
-            <a href="/event/<%=event[i]._id%>/runners">
-              <%=event[i].eventName%></a
-            >
-          </div class="eventDetail">
-          <div class="eventDetail"><%=event[i].isActive ? "Active" : "Closed"%></div>
-
-          <div class="eventDetail" id="distance"><%=event[i].distance%> K</div>
+      <% for( let i = 0; i < event.length; i++ ) { %>
+      <div class="row" id="event-item">
+        <div class="col-md-3 text-center">
+          <%=moment(event[i].date).format('MMMM Do YYYY')%>
         </div>
-        <% } %>
+        <div class="col-md-3 text-center">
+          <a href="/event/<%=event[i]._id%>/runners">
+            <%=event[i].eventName%></a
+          >
+        </div>
+        <div class="col-md-3 text-center">
+          <%=event[i].isActive ? "Active" : "Closed"%>
+        </div>
+
+        <div class="col-md-3 text-center" id="distance">
+          <%=event[i].distance%> K
+        </div>
       </div>
+      <% } %>
     </div>
   </body>
 </html>

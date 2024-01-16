@@ -2,31 +2,39 @@
 <html lang="en">
   <%- include("../partials/head.ejs",{title: "Show Event"}) %>
   <body>
-    <div id="main-container">
     <%- include("../partials/header.ejs") %>
-    <div id="item-container">
-      
-      <div class="eventDetail-container">
-        <div class="eventDetail"><%=event.eventName%></div>
-      <div class="eventDetail" id="button"><a href="/event/edit/<%=event._id %>">Edit Event</a> </div>
-          <div class="eventDetail" id="button"><a href="/runner/<%=event._id %>/new"
-        >Add Runner</a></div>
-      <form id="delete"action="/event/<%=event._id%>?_method=DELETE" method="POST">
-        <div  id="button"><button>Delete Event</button></div>
-      </form>
- </div>
+    <div class="container">
+      <div class="col-md-3"><%=event.eventName%></div>
+      <div class="row">
+        <div class="col-md-3" id="button">
+          <a href="/event/edit/<%=event._id %>">Edit Event</a>
+        </div>
+        <div class="col-md-3" id="button">
+          <a href="/runner/<%=event._id %>/new">Add Runner</a>
+        </div>
+        <div class="col-md-2">
+          <form
+            id="delete"
+            action="/event/<%=event._id%>?_method=DELETE"
+            method="POST"
+          >
+            <div id="button"><button>Delete Event</button></div>
+          </form>
+        </div>
+      </div>
     </div>
-    <div id="event-container">
+    <div class="container">
       <% for( let i = 0; i < runners.length; i++ ) { %>
-      <div id="event-item">
-        <div class="runnerDetail"><a href="/runner/<%=event._id%>/<%=runners[i]._id%>"><%=runners[i].firstName%> <%=runners[i].lastName%></a
-        ></div>
-        <div class="runnerDetail"> <%=runners[i].age%></div>
-        <div class="runnerDetail"><%=runners[i].pace%></div>
+      <div class="row" id="event-item">
+        <div class="col-md-4">
+          <a href="/runner/<%=event._id%>/<%=runners[i]._id%>"
+            ><%=runners[i].firstName%> <%=runners[i].lastName%></a
+          >
+        </div>
+        <div class="col-md-4"><%=runners[i].age%></div>
+        <div class="col-md-4"><%=runners[i].pace%></div>
       </div>
       <% } %>
     </div>
-  </div>
-    </body>
   </body>
 </html>
