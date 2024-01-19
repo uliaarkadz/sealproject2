@@ -1,6 +1,7 @@
 const Event = require("../models/Event");
 const Runner = require("../models/Runner");
 const moment = require("moment");
+const myFunctions = require("../utils/customFunctions");
 
 /////////////////
 //Runners Routs
@@ -19,9 +20,10 @@ const index = async (req, res) => {
 };
 
 // New route - get new runner
-const newRoute = (req, res) => {
+const newRoute = async (req, res) => {
   const eventId = req.params.eventId;
-  res.render("runners/new.ejs", { eventId });
+  const event = await Event.findById(eventId);
+  res.render("runners/new.ejs", { event });
 };
 
 //Create route - post runner
@@ -32,24 +34,16 @@ const create = async (req, res) => {
     req.body.eventId = eventId;
     //get event distance
     const event = await Event.findById(eventId);
-    const unit = event.unit;
-    let distance;
-
-    switch (event.unit) {
-      case "km":
-        distance = event.distance / 1.609;
-        break;
-      case "m":
-        distance = event.distance;
-        break;
-      default:
-        console.log("Not valid inpit");
-    }
     //calculate pace
     req.body.pace = myFunctions.calculatePace(
       req.body.finishTime,
       req.body.startTime,
-      distance
+      event.distance,
+      event.unit
+    );
+    req.body.netTime = myFunctions.convertNetTime(
+      req.body.finishTime,
+      req.body.startTime
     );
     req.body.dob = moment(req.body.dob).utc();
     await Runner.create(req.body);
@@ -66,8 +60,8 @@ const edit = async (req, res) => {
     const id = req.params.runnerId;
     const eventId = req.params.eventId;
     const runner = await Runner.findById(id);
-
-    res.render("runners/edit.ejs", { runner, eventId, moment });
+    const event = await Event.findById(eventId);
+    res.render("runners/edit.ejs", { runner, eventId, moment, event });
   } catch (error) {
     console.log("-----", error.message, "------");
     res.status(400).send("error, read logs for details");
@@ -82,26 +76,22 @@ const update = async (req, res) => {
     const eventId = req.params.eventId;
     req.body.eventId = eventId;
     const event = await Event.findById(eventId);
-    const unit = event.unit;
-    let distance;
 
-    switch (event.unit) {
-      case "km":
-        distance = event.distance / 1.609;
-        break;
-      case "m":
-        distance = event.distance;
-        break;
-      default:
-        console.log("Not valid inpit");
-    }
     //calculate pace
     req.body.pace = myFunctions.calculatePace(
       req.body.finishTime,
       req.body.startTime,
-      distance
+      event.distance,
+      event.unit
     );
+
+    req.body.netTime = myFunctions.convertNetTime(
+      req.body.finishTime,
+      req.body.startTime
+    );
+
     req.body.dob = moment(req.body.dob).utc();
+    console.log(req.body);
     await Runner.findByIdAndUpdate(id, req.body);
     res.redirect(`/runner/${eventId}/${id}`);
   } catch (error) {

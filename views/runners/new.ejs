@@ -3,21 +3,106 @@
   <%- include("../partials/head.ejs",{title: "Create New Runner"}) %>
   <body>
     <%- include("../partials/header.ejs") %>
-    <h2>Create a new runner</h2>
-    <form action="/runner/<%=eventId %>" method="post">
-      First Name: <input type="text" name="firstName" /> Last Name:
-      <input type="text" name="lastName" /> Age:
-      <input type="number" name="age" /> Date of Birth:
-      <input type="date" name="dob" /> Gender:
-      <select name="gender">
-        <option value=""></option>
-        <option value="m">Male</option>
-        <option value="f">Female</option>
-      </select>
-      Bib#: <input type="text" name="bib" /> Start Time:
-      <input type="time" step="1" name="startTime" /> Finish Time:
-      <input type="time" step="1" name="finishTime" />
-      <button>Add runner</button>
-    </form>
+    <div class="container">
+      <div class="col-md-4">
+        <h2>Add New Runner to <%=event.eventName %></h2>
+      </div>
+    </div>
+
+    <div class="container">
+      <div id="form">
+        <form action="/runner/<%=event.id %>" method="post">
+          <div class="row g-3 align-items-center">
+            <label class="col-md-2 col-form-label gradient" for="firstName">
+              First Name</label
+            >
+            <div class="col-auto">
+              <input class="form-control" type="text" name="firstName" />
+            </div>
+          </div>
+
+          <div class="row g-3 align-items-center">
+            <label class="col-md-2 col-form-label gradient" for="lastName"
+              >Last Name</label
+            >
+            <div class="col-auto">
+              <input class="form-control" type="text" name="lastName" />
+            </div>
+          </div>
+
+          <div class="row g-3 align-items-center">
+            <label class="col-md-2 col-form-label gradient" for="age"
+              >Age</label
+            >
+            <div class="col-auto">
+              <input class="form-control" type="number" name="age" />
+            </div>
+          </div>
+
+          <div class="row g-3 align-items-center">
+            <label class="col-md-2 col-form-label gradient" for="dob"
+              >Date of Birth</label
+            >
+            <div class="col-auto">
+              <input class="form-control" type="date" name="dob" />
+            </div>
+          </div>
+
+          <div class="row g-3 align-items-center">
+            <label class="col-md-2 col-form-label gradient" for="lastName"
+              >Gender</label
+            >
+            <div class="col-md-2">
+              <select class="form-select" name="gender">
+                <option value=""></option>
+                <option value="m">Male</option>
+                <option value="f">Female</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row g-3 align-items-center">
+            <label class="col-md-2 col-form-label gradient" for="bib">
+              Bib#</label
+            >
+            <div class="col-auto">
+              <input class="form-control" type="text" name="bib" />
+            </div>
+          </div>
+
+          <div class="row g-3 align-items-center">
+            <label class="col-md-2 col-form-label gradient" for="startTime"
+              >Start Time</label
+            >
+            <div class="col-auto">
+              <input
+                class="form-control"
+                type="time"
+                step="1"
+                name="startTime"
+              />
+            </div>
+          </div>
+
+          <div class="row g-3 align-items-center">
+            <label class="col-md-2 col-form-label gradient" for="finishTime"
+              >Finish Time</label
+            >
+            <div class="col-auto">
+              <input
+                class="form-control"
+                type="time"
+                step="1"
+                name="finishTime"
+              />
+            </div>
+          </div>
+
+          <div class="col-md-3" id="button">
+            <button>Add runner</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

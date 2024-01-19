@@ -1,28 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include("../partials/head.ejs") ,{title: "Edit Runner"}%>
+  <%- include("../partials/head.ejs" ,{title: "Edit Runner"})%>
   <body>
     <%- include("../partials/header.ejs") %>
-    <h2>Edit runner</h2>
+    <div class="container">
+      <div class="col-md-4 h2"><h2>Edit runner for <%=event.eventName %></h2></div></div>
+    <div class="container">
     <form action="/runner/<%=eventId %>/<%=runner._id %>?_method=PUT" method="post">
-      First Name:<input type="text" name="firstName" value="<%=runner.firstName %>"/> Last Name:<input
-        type="text"
-        name="lastName"
-        value="<%=runner.lastName %>"
-      />
-      Age: <input type="number" name="age" value="<%=runner.age %>" /> Date of Birth:<input
-        type="date"
-        name="dob"
-        value="<%=moment(runner.dob).format('yyyy-MM-DD')%>"
-      />
-      Gender:
-      <select name="gender">
-        <option value=""></option>
-        <option value="m" <%if(runner.gender =='m'){%>selected <% } %>>Male</option>
-        <option value="f" <%if(runner.gender =='f'){%>selected <% } %>>Female</option>
-      </select>
-      Bib#: <input type="text" name="bib" value="<%=runner.bib %>"/> 
-      Start Time:<input type="time" step="1" name="startTime"  value="<%=runner.startTime %>"/> Finish
-      Time:<input type="time" step="1" name="finishTime" value="<%=runner.finishTime %>" />
-      <button>Update</button></body>
+
+      <div class="row g-3 align-items-center">
+        <label class="col-md-2 col-form-label" for="firstName">
+          First Name</label
+        >
+        <div class="col-auto">
+          <input class="form-control" type="text" name="firstName" value="<%=runner.firstName %>"/>
+        </div>
+      </div>
+
+      <div class="row g-3 align-items-center">
+        <label class="col-md-2 col-form-label" for="lastName"
+          >Last Name</label
+        >
+        <div class="col-auto">
+          <input class="form-control" type="text" name="lastName" value="<%=runner.lastName %>"/>
+        </div>
+      </div>
+
+      <div class="row g-3 align-items-center">
+        <label class="col-md-2 col-form-label" for="age">Age</label>
+        <div class="col-auto">
+          <input class="form-control" type="number" name="age" value="<%=runner.age %>"/>
+        </div>
+      </div>      
+      
+      <div class="row g-3 align-items-center">
+        <label class="col-md-2 col-form-label" for="dob">Date of Birth</label>
+        <div class="col-auto">
+          <input class="form-control" type="date" name="dob" value="<%=moment(runner.dob).format('yyyy-MM-DD')%>"/>
+        </div>
+      </div>
+
+      <div class="row g-3 align-items-center">
+        <label class="col-md-2 col-form-label" for="lastName">Gender</label>
+        <div class="col-md-2">
+          <select class="form-select" name="gender">
+            <option value=""></option>
+            <option value="m" <%if(runner.gender =='m'){%>selected <% } %>>Male</option>
+            <option value="f" <%if(runner.gender =='f'){%>selected <% } %>>Female</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row g-3 align-items-center">
+        <label class="col-md-2 col-form-label" for="bib"> Bib#</label>
+        <div class="col-auto">
+          <input class="form-control" type="text" name="bib" value="<%=runner.bib %>"/>
+        </div>
+      </div>
+
+
+      <div class="row g-3 align-items-center">
+        <label class="col-md-2 col-form-label" for="startTime"
+          >Start Time</label
+        >
+        <div class="col-auto">
+          <input
+            class="form-control"
+            type="time" step="1"
+            name="startTime"
+            value="<%=runner.startTime %>"
+           />
+        </div>
+      </div>
+
+      <div class="row g-3 align-items-center">
+        <label class="col-md-2 col-form-label" for="finishTime"
+          >Finish Time</label
+        >
+        <div class="col-auto">
+          <input
+            class="form-control"
+            type="time"
+            step="1"
+            name="finishTime"
+            value="<%=runner.finishTime %>"
+          />
+        </div>
+      </div>
+
+      <div class="col-md-3" id="button">
+        <button>Update</button>
+      </div>
+      </form>
+    </div>
+    </body>
 </html>

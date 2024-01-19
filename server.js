@@ -7,8 +7,8 @@ const mongoose = require("./models/connection");
 
 const moment = require("moment");
 
-const eventController = require("../controllers/event");
-const runnerController = require("../controllers/runner");
+const eventController = require("./controllers/event");
+const runnerController = require("./controllers/runner");
 
 //get .env variable
 const { PORT } = process.env;

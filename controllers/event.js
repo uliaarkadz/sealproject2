@@ -13,10 +13,6 @@ const router = express.Router();
 //Event Routs
 ////////////////
 
-router.get("/", (req, res) => {
-  res.send("It's Working");
-});
-
 // Index route - get events
 router.get("/", eventActions.index);
 
@@ -27,7 +23,7 @@ router.get("/new", eventActions.newRoute);
 router.post("/", eventActions.create);
 
 // Edit route - edit event
-app.get("/edit/:id", eventActions.edit);
+router.get("/edit/:id", eventActions.edit);
 
 //Update route - put event
 router.put("/:id", eventActions.update);
@@ -48,3 +44,5 @@ router.delete("/event/:id", eventActions.destroy);
 
 // Show route - get event runners
 router.get("/:eventId/runners", eventActions.show);
+
+module.exports = router;

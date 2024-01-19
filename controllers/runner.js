@@ -23,7 +23,7 @@ router.get("/:eventId/new", runnerActions.newRoute);
 router.post("/:eventId", runnerActions.create);
 
 // Edit route - get edit runner
-app.get("/runner/:eventId/edit/:runnerId", runnerActions.edit);
+router.get("/:eventId/edit/:runnerId", runnerActions.edit);
 
 //Update route - put runner
 
@@ -34,3 +34,5 @@ router.delete("/:eventId/:id", runnerActions.destroy);
 
 //Show route - get runner by id
 router.get("/:eventId/:id", runnerActions.show);
+
+module.exports = router;

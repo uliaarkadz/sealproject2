@@ -3,13 +3,20 @@
   <%- include("../partials/head.ejs",{title: "Show Event"}) %>
   <body>
     <%- include("../partials/header.ejs") %>
+
     <div class="container">
-      <div class="col-md-3"><%=event.eventName%></div>
       <div class="row">
-        <div class="col-md-3" id="button">
+        <div class="col-auto h2 event"><%=event.eventName%></div>
+        <div class="col-auto h2 event">
+          <%=moment(event.date).format('MMMM Do YYYY hh:mm')%>
+        </div>
+        <div class="col-auto h2 event"><%=event.description%></div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 text-center" id="button">
           <a href="/event/edit/<%=event._id %>">Edit Event</a>
         </div>
-        <div class="col-md-3" id="button">
+        <div class="col-md-3 text-center" id="button">
           <a href="/runner/<%=event._id %>/new">Add Runner</a>
         </div>
         <div class="col-md-2">
@@ -26,13 +33,13 @@
     <div class="container">
       <% for( let i = 0; i < runners.length; i++ ) { %>
       <div class="row" id="event-item">
-        <div class="col-md-4">
+        <div class="col-md-4 text-center">
           <a href="/runner/<%=event._id%>/<%=runners[i]._id%>"
             ><%=runners[i].firstName%> <%=runners[i].lastName%></a
           >
         </div>
-        <div class="col-md-4"><%=runners[i].age%></div>
-        <div class="col-md-4"><%=runners[i].pace%></div>
+        <div class="col-md-4 text-center"><%=runners[i].age%></div>
+        <div class="col-md-4 text-center"><%=runners[i].pace%></div>
       </div>
       <% } %>
     </div>

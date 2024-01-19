@@ -6,10 +6,6 @@ const moment = require("moment");
 //Event Routs
 ////////////////
 
-//  = (req, res) => {
-//   res.send("It's Working");
-// };
-
 // Index route - get events
 const index = async (req, res) => {
   try {
