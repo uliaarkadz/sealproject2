@@ -9,6 +9,16 @@ const runnerActions = require("../actions/runners");
 ///////////////////////////////////////
 const router = express.Router();
 
+router.use((req, res, next) => {
+  console.table(req.session);
+
+  if (req.session.loggedIn) {
+    next();
+  } else {
+    res.redirect("/user/login");
+  }
+});
+
 /////////////////
 //Runners Routs
 ////////////////

@@ -9,6 +9,16 @@ const eventActions = require("../actions/events");
 ///////////////////////////////////////
 const router = express.Router();
 
+router.use((req, res, next) => {
+  console.table(req.session);
+
+  if (req.session.loggedIn) {
+    next();
+  } else {
+    res.redirect("/user/login");
+  }
+});
+
 /////////////////
 //Event Routs
 ////////////////

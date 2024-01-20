@@ -1,6 +1,6 @@
 <header>
   <div class="container">
-    <h1 class="col-sm-12">RUNNING TIME APP</h1>
+    <h1 class="col-sm-12" id="appname">RUNNING TIME APP</h1>
     <div
       class="row align-items-center justify-content-center text-center"
       id="menuMain"
@@ -25,18 +25,39 @@
       </div>
     </div>
   </div>
-  <nav>
-    <div id="menu">
-      <a href="/event"><div class="menu-item">Event Home</div></a>
-    </div>
-
-    <div id="hamburger">
-      <label id="hamburger-label" for="hamburger-toggle">
-        <div class="hamburger-line"></div>
-        <div class="hamburger-line"></div>
-        <div class="hamburger-line"></div>
-      </label>
-      <input type="checkbox" id="hamburger-toggle" />
+  <nav class="navbar navbar-expand-sm navbar-dark">
+    <div class="container">
+      <button
+        class="navbar-toggler ms-auto"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#n_bar"
+        aria-controls="navbarNavAltMarkup"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="n_bar">
+        <ul class="navbar-nav">
+          <li class="nav-item col-sm-2 linkItem">
+            <a href="/event">Event Home</a>
+          </li>
+          <li class="nav-item col-sm-2 linkItem">
+            <a class="nav-link col-sm-2 linkItem" href="/event/new"
+              >Create Event</a
+            >
+          </li>
+          <li class="nav-item col-sm-2 linkItem">
+            <a class="nav-link" href="/user/signup">Signup</a>
+          </li>
+          <li class="nav-item col-sm-2 linkItem">
+            <a class="nav-link" href="/user/login">Login</a>
+          </li>
+          <li class="nav-item col-sm-2 linkItem">
+            <a class="nav-link" href="/user/logout">Logout</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
 </header>
