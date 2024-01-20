@@ -32,14 +32,15 @@
         <label class="col-md-2 col-form-label" for="distance">
         Distance</label>
         <div class="col-md-1">
-        <input class="form-control" id="distance"
+        <input readonly class="form-control" id="distance"
           type="number"
           name="distance"
           value="<%=event.distance%>"
       />
       </div>
       <div class="col-md-1">
-      <select class="form-select" name="unit">
+      <select disabled class="form-select" name="unit">
+
         <option value="km" <%if(event.unit =='km'){%>selected <% } %>>Kilometers</option>
         <option value="m" <%if(event.unit =='m'){%>selected <% } %>>Miles</option>        
       </select>
@@ -52,6 +53,7 @@
         <div class="col-auto">  
         <input class="form-control"
           type="date"
+          min="<%=moment().format('yyyy-MM-DD')%>"
           name="date"
           value="<%=moment(event.date).format('yyyy-MM-DD')%>"
       />

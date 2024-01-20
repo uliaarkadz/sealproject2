@@ -11,10 +11,10 @@ const mongoose = require("./connection");
 const { Schema, model } = mongoose;
 
 const runnerSchema = new Schema({
-  firstName: String,
-  lastName: String,
-  age: Number,
-  gender: String,
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true },
+  age: { type: Number, required: true },
+  gender: { type: String, required: true },
   dob: Date,
   bib: Number,
   startTime: String,
@@ -24,6 +24,7 @@ const runnerSchema = new Schema({
   eventId: Schema.Types.ObjectId,
 });
 
+runnerSchema.index({ bib: 1, eventId: 1 }, { unique: true });
 const Runner = model("Runner", runnerSchema);
 
 module.exports = Runner;

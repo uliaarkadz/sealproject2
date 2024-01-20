@@ -19,7 +19,7 @@ const index = async (req, res) => {
 
 // New route - post event
 const newRoute = (req, res) => {
-  res.render("events/new.ejs");
+  res.render("events/new.ejs", { moment });
 };
 
 //Create route - post event
@@ -64,7 +64,9 @@ const update = async (req, res) => {
 const destroy = async (req, res) => {
   try {
     const id = req.params.id;
+    await Runner.deleteMany({ eventId: id });
     await Event.findByIdAndDelete(id);
+
     res.redirect(`/event`);
   } catch (error) {
     console.log("-----", error.message, "------");

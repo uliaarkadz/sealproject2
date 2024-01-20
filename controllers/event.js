@@ -37,7 +37,7 @@ router.get("/edit/:id", eventActions.edit);
 router.put("/:id", eventActions.update);
 
 //Destroy route - delete event
-router.delete("/event/:id", eventActions.destroy);
+router.delete("/:id", eventActions.destroy);
 
 //Show Route - display event by id
 // app.get("/event/:id", async (req, res) => {

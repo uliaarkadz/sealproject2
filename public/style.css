@@ -1,6 +1,7 @@
 body {
   background: linear-gradient(to bottom, #002c73 0%, #00a6e5 100%);
-  color: white;
+
+  height: 100%;
 }
 #mainimage {
   background-image: url("https://prodsitecoreimage.nyrr.org/nyrrsitecoreblob/nyrr/image/marathon-pages/homepage/meta-images/nycm18_sm_1866_r2_web.jpg");
