@@ -18,7 +18,6 @@ const eventSchema = new Schema({
   unit: String,
   date: Date,
   isActive: Boolean,
-  username: String,
 });
 
 //Model - object for interactiong with DB

@@ -2,16 +2,29 @@ body {
   background: linear-gradient(to bottom, #002c73 0%, #00a6e5 100%);
   color: white;
 }
+#mainimage {
+  background-image: url("https://prodsitecoreimage.nyrr.org/nyrrsitecoreblob/nyrr/image/marathon-pages/homepage/meta-images/nycm18_sm_1866_r2_web.jpg");
+  /* background: linear-gradient(to bottom, #002c73 0%, #00a6e5 100%); */
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  background-size: auto;
+}
+
 a {
   text-decoration: none !important;
-  color: white;
 }
-h1 {
+#appname {
   text-align: center;
-  margin-top: 150px;
+  margin-top: 50px;
   padding: 20px;
-  color: #3b96eb;
+  color: #002c73;
+  height: 10rem;
+  font-size: 2rem;
+  font-weight: 900;
+  text-shadow: 1px 1px 2px #00a6e5;
 }
+
 div h2 {
   text-align: center;
   color: #3b96eb;
@@ -41,10 +54,9 @@ label {
   padding: 10px;
   background-color: #00a6e5;
 }
-
-/* div {
-  border: 1px solid red;
-} */
+.linkItem a {
+  color: #002c73;
+}
 
 button {
   all: unset;
@@ -72,6 +84,7 @@ button {
 #event-item div a {
   color: white !important;
 }
+
 #event-item div:last-child {
   border-right: none;
 }
@@ -84,6 +97,7 @@ button {
   text-align: center;
   background: linear-gradient(to top, #81878f 0%, #f2f9fb 100%);
 }
+
 #newuserbutton {
   padding: 10px;
   margin-top: 30px;
@@ -92,14 +106,17 @@ button {
   text-align: center;
   background: linear-gradient(to top, #81878f 0%, #f2f9fb 100%);
 }
+
 label {
   margin: 10px;
   font-size: larger;
   font-weight: 600;
 }
+
 label:after {
   content: ": ";
 }
+
 input,
 select {
   margin: 10px;
@@ -107,6 +124,7 @@ select {
   font-size: 14px;
   font-weight: 600;
 }
+
 #active {
   box-shadow: none;
   margin: 10px;
@@ -117,20 +135,19 @@ select {
   padding: 0px;
   margin: 0px;
 }
+
 .runner,
 .event {
   color: #002c73;
 }
+
 #pace {
   color: rgb(200, 90, 50);
 }
+
 nav {
   display: none !important;
   all: unset;
-}
-#appname {
-  border: 2px solid #00a6e5;
-  height: 15rem;
 }
 
 #signup {
@@ -157,9 +174,11 @@ nav {
     font-size: medium;
     font-weight: 400;
   }
+
   label:after {
     content: ": ";
   }
+
   input,
   select {
     margin: 5px;
@@ -174,6 +193,7 @@ nav {
     margin: 5px;
     padding: 5px;
   }
+
   #menuMain {
     display: none;
   }
@@ -182,19 +202,22 @@ nav {
     background-color: linear-gradient(to bottom, #81878f 0%, #f2f9fb 100%);
     display: inline !important;
   }
+
   .linkItem {
     all: unset;
   }
+
   #signup {
     padding-top: 150px;
     height: 250vw;
   }
+
   .user input,
   .user label {
     font-size: larger;
     font-weight: 800;
-    /* margin: 10px 10px 10px 10px; */
   }
+
   #newuserbutton {
     padding: 10px;
     margin: 20px;
