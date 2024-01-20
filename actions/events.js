@@ -9,7 +9,7 @@ const moment = require("moment");
 // Index route - get events
 const index = async (req, res) => {
   try {
-    const event = await Event.find({});
+    const event = await Event.find({}).sort("-date");
     res.render("events/index.ejs", { event, moment });
   } catch (error) {
     console.log("-----", error.message, "------");
