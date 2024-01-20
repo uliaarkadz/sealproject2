@@ -24,6 +24,6 @@ const runnerSchema = new Schema({
   eventId: Schema.Types.ObjectId,
 });
 
-const Runner = model("Event", runnerSchema);
+const Runner = model("Runner", runnerSchema);
 
 module.exports = Runner;

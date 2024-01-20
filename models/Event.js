@@ -21,7 +21,7 @@ const eventSchema = new Schema({
 });
 
 //Model - object for interactiong with DB
-const Event = model("Fruit", eventSchema);
+const Event = model("Event", eventSchema);
 
 ////////////////////////
 //Export FRUIT MODEL
